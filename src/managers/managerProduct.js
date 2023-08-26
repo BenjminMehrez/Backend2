@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-export const path = '../my-backend/src/files/productos.json'
+export const path = './src/files/productos.json'
 
 export default class ManagerProduct {
     constructor(path) {
