@@ -1,0 +1,42 @@
+[
+    {
+        "titulo": "Remera",
+        "descripcion": "Remera Puma",
+        "precio": 11000,
+        "imagen": "imagen1",
+        "categoria": "remera",
+        "codigo": "RMAA",
+        "existencias": 3,
+        "id": 1
+    },
+    {
+        "titulo": "Zapatilla",
+        "descripcion": "Zapatilla Adidas",
+        "precio": 437000,
+        "imagen": "imagen2",
+        "categoria": "zapatilla",
+        "codigo": "ZPAA",
+        "existencias": 5,
+        "id": 2
+    },
+    {
+        "titulo": "Botines",
+        "descripcion": "Botines Future Play",
+        "precio": 31000,
+        "imagen": "imagen3",
+        "categoria": "botines",
+        "codigo": "BTAA",
+        "existencias": 2,
+        "id": 3
+    },
+    {
+        "titulo": "Campera",
+        "descripcion": "Campera TheNorthFace",
+        "precio": 47000,
+        "imagen": "imagen4",
+        "categoria": "campera",
+        "codigo": "CAMAA",
+        "existencias": 1,
+        "id": 4
+    }
+]

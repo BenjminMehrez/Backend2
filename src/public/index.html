@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Formulario de mascotas</h1>
+    <form action="/api/products" enctype="multipart/form-data" method="POST">
+        <label>Nombre</label>
+        <input name="name">
+        <label>Especie</label>
+        <input name="specie"></input>
+        <label for="Imagen"></label>
+        <input type="file" name="thumbnail">
+        <input type="submit">
+    </form>
+</body>
+</html>
