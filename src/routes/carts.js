@@ -1,36 +1,40 @@
 import { Router } from 'express';
 import CartManager from '../managers/carts/CartsManager.js';
-import ManagerProduct from '../managers/managerProduct.js'
-
 
 const router = Router();
-const cartmanager = new CartManager();
-const manager = new ManagerProduct();
+const cartManager = new CartManager("./files/carts.json");
 
-router.post('/:cid/product/:pid', async (req,res)=>{
-    let pId = Number(req.params.pid);
-    let cId = Number(req.params.cid);
-
-    try {
-        const  product = await manager.getProductsById(pId);
-        const cart = await cartmanager.addToCart(cId, product);
-    } catch (error) {
-        console.log(error);
+router.post("/", async (req, res) => {
+    const result = await cartManager.createCart();
+    if (typeof result === "string") {
+        const error = result.split(" ");
+        return res.status(parseInt(error[0].slice(1, 4))).json({ error: result.slice(6) });
     }
+    res.status(201).json({ status: "success", payload: result });
+});
 
-    res.send({status: 'success'});
+
+router.get("/:cid", async (req, res) => {
+    const id = parseInt(req.params.cid)
+    const result = await cartManager.getProducts(id)
+    if (typeof result === "string") {
+        const error = result.split(" ")
+        return res.status(parseInt(error[0].slice(1,4))).json({ error: result.slice(6)})
+    }
+    res.status(200).json({status: "success", payload: result})
 })
 
-router.get('/:cid', async (req,res) =>{
-    let id = Number(req.params.cid);
-    const cart = await cartmanager.getCartById(id);
-    res.send({cart})
-})
+router.post("/:cid/products/:pid", async (req, res) => {
+    const cid = parseInt(req.params.cid);
+    const pid = parseInt(req.params.pid);
+    const result = await cartManager.addProductToCart(cid, pid);
+    if (typeof result === "string") {
+        const error = result.split(" ");
+        return res.status(parseInt(error[0].slice(1, 4))).json({ error: result.slice(6) });
+    }
+    res.status(201).json({ status: "success", payload: result });
+});
 
-router.post('/', async (req,res)=>{
-    await cartmanager.newCart();
-    res.send({status: 'success'});
-})
 
 
 export default router;
